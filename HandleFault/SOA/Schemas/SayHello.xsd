@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+        targetNamespace="http://xmlns.oracle.com/TestFaultHandling/HandleFault/SayHello"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="process">
+    <complexType>
+      <sequence>
+        <element name="input">
+          <simpleType>
+            <restriction base="string">
+              <enumeration value="Reebok"/>
+            </restriction>
+          </simpleType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  
+  <element name="faultHolder">
+    <complexType>
+      <sequence>
+        <element name="code" type="string"/>
+        <element name="summary" type="string"/>
+        <element name="detail" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  
+</schema>

@@ -1,0 +1,34 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SayHello"
+     targetNamespace="http://xmlns.oracle.com/TestFaultHandling/HandleFault/SayHello"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/TestFaultHandling/HandleFault/SayHello"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+    >
+    <plnk:partnerLinkType name="SayHello">
+        <plnk:role name="SayHelloProvider" portType="client:SayHello"/>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/TestFaultHandling/HandleFault/SayHello"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:ns1="http://schemas.oracle.com/bpel/extension">
+            <import namespace="http://xmlns.oracle.com/TestFaultHandling/HandleFault/SayHello"
+                 schemaLocation="../Schemas/SayHello.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SayHelloRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="SayHelloResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="SayHello">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SayHelloRequestMessage"/>
+            <wsdl:output message="client:SayHelloResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>
